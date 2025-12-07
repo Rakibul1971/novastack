@@ -1,0 +1,117 @@
+.navbar {
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    letter-spacing: -0.5px;
+}
+
+.logo-icon {
+    color: var(--color-primary);
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-text-main);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.navbar-toggle {
+    display: none;
+    cursor: pointer;
+    color: var(--color-text-main);
+}
+
+.desktop-cta {
+    display: block;
+}
+
+.mobile-cta {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    .desktop-cta {
+        display: none;
+    }
+
+    .mobile-cta {
+        display: block;
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    .mobile-cta .btn {
+        width: 100%;
+    }
+
+    .navbar-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-bg);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--color-border);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .navbar-links.open {
+        transform: translateY(0);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+}
